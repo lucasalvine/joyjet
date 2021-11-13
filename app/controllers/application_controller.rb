@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     Rails.logger.info("[data][log]#{message}, #{body}")
   end
 
-  def log_error
+  def log_error(message, body)
     Rails.logger.error("[data][log]#{message}, #{body}")
   end
 end
