@@ -10,15 +10,20 @@ module CartHelper
 
     carts.each do |cart|
       total_price = 0
-      cart["items"].each do |item|
-        articles.each do |article|
-          if article["id"] == item["article_id"]
-            total_price += item["quantity"] * article["price"]
-            break
+
+      if cart["items"].blank?
+        total_price
+      else
+        cart["items"].each do |item|
+          articles.each do |article|
+            if article["id"] == item["article_id"]
+              total_price += item["quantity"].to_f * article["price"].to_f
+              break
+            end
           end
         end
       end
-      result.push({ "id" => cart[:id], "total" => total_price })
+      result.push({ "id" => cart["id"], "total" => total_price.to_i })
     end
 
     Rails.logger.info("[data][log][CART][TOTAL_PRICE][RESULT], #{result}")
@@ -39,12 +44,13 @@ module CartHelper
       total_price = 0
       delivery_fees.each do |fee|
         eligible_transaction = fee["eligible_transaction_volume"]
-        if (eligible_transaction["min_price"]..eligible_transaction["max_price"]).include? (cart["total"])
-          total_price = cart["total"] + fee["price"]
+        if (eligible_transaction["min_price"].to_f..eligible_transaction["max_price"].to_f).include? (cart["total"].to_f)
+          total_price = cart["total"].to_f + fee["price"].to_f
           break
         end
       end
-      result.push({ "id" => cart[:id], "total" => total_price })
+
+      result.push({ "id" => cart["id"], "total" => total_price.to_i })
     end
 
     Rails.logger.info("[data][log][CART][WITH_DELIVERY][RESULT], #{result}")

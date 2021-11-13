@@ -22,10 +22,8 @@ class CartController < ApplicationController
     if params[:delivery_fees].blank?
       log_error("[LEVEL][TWO][PARAMS]", { articles: params[:articles], carts: params[:carts] }) 
 
-      return render json: {
-        status: 'error',
-        message: CartHelper::DELIVERY_FEES_ERROR_MESSAGE
-      }, status: 404
+      render json: { status: 'error', message: CartHelper::DELIVERY_FEES_ERROR_MESSAGE }, status: 404
+      return
     end
 
     delivery_fees = params[:delivery_fees]
@@ -45,10 +43,8 @@ class CartController < ApplicationController
     if params[:delivery_fees].blank? || params[:discounts].blank?
       log_error("[LEVEL][TWO][PARAMS]", { articles: params[:articles], carts: params[:carts] })             
 
-      return render json: {
-        status: 'error',
-        message: CartHelper::DISCOUNT_ERROR_MESSAGE
-      }, status: 404
+      render json: { status: 'error', message: CartHelper::DISCOUNT_ERROR_MESSAGE }, status: 404
+      return
     end
 
     delivery_fees = params[:delivery_fees]
@@ -62,7 +58,7 @@ class CartController < ApplicationController
           when "percentage"
             total_price = article["price"].to_f - (article["price"].to_f * discount["value"] / 100)
           when "amount"
-            total_price = article["price"].to_f - discount["value"]
+            total_price = article["price"].to_f - discount["value"].to_f
           else
             log_error("[LEVEL][THREE][ERROR]{DISCOUNT][TYPE]", { articles: params[:articles], carts: params[:carts] })
             total_price = article["price"]
@@ -83,10 +79,8 @@ class CartController < ApplicationController
 
   def validate_cart_params
     if params[:articles].blank? || params[:carts].blank?
-      return render json: {
-        status: 'error',
-        message: CartHelper::ERROR_MESSAGE
-      }
+      render json: { status: 'error', message: CartHelper::ERROR_MESSAGE }, status: 404
+      return
     end
   end
 end
