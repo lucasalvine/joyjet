@@ -1,24 +1,46 @@
-# README
+# Joyjet Tech Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### :coffee: Test Requirements
 
-Things you may want to cover:
+To see the requirements, you can access this [address](https://bitbucket.org/lixao/tech-interview-tests/src/master/backend/)
 
-* Ruby version
+### Used Libraries
 
-* System dependencies
+- [rails](https://guides.rubyonrails.org/v6.0/)
+- [rspec-rails](https://rspec.info/)
 
-* Configuration
+### Instruções para rodar a API
 
-* Database creation
+```
+# Start project
+$ Clone this repository
 
-* Database initialization
+# Running the installation of libraries
+$ bundle install
 
-* How to run the test suite
+# Running the tests
+$ cd joyjet
+$ rspec
 
-* Services (job queues, cache servers, search engines, etc.)
+# Running app
+$ rails s
 
-* Deployment instructions
+```
 
-* ...
+### Routes
+
+- POST/cart/level1 - Execute route test level 1.
+- POST/cart/level2 - Execute route test level 2.
+- POST/cart/level3 - Execute route test level 3.
+
+### Insomnia
+
+- If using Insomnia, you can import routes from here:
+
+<a href="https://insomnia.rest/run/?label=JoyjetTest&uri=https%3A%2F%2Fgithub.com%2Flucasalvine%2Fjoyjet%2Fblob%2Fmaster%2FInsomnia-All_2021-11-13.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+
+### Thats it ! :coffee:
+
+---
+
+by Lucas Cunha
