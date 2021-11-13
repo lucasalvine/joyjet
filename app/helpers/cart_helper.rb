@@ -1,6 +1,7 @@
 module CartHelper
   ERROR_MESSAGE = 'Sorry, something went wrong. Please try again.'
   DELIVERY_FEES_ERROR_MESSAGE = 'Delivery fees is required.'
+  DISCOUNT_ERROR_MESSAGE = 'Discount is required.'
 
   def self.cart_total_price(articles, carts)
     Rails.logger.info("[data][log][CART][TOTAL_PRICE][PARAMS], #{articles}, #{carts}")
