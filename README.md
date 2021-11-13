@@ -9,7 +9,7 @@ To see the requirements, you can access this [address](https://bitbucket.org/lix
 - [rails](https://guides.rubyonrails.org/v6.0/)
 - [rspec-rails](https://rspec.info/)
 
-### Instruções para rodar a API
+### How to run this project 
 
 ```
 # Start project
